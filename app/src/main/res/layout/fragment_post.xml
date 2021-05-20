@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/orderFoodLayout"
+            android:elevation="4dp"
+            android:background="@drawable/darkoutline"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_margin="10dp"
+
+            >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:src="@drawable/orderfoodnow"
+                android:scaleType="centerCrop"
+                />
+
+            <android.widget.Button
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:backgroundTint="#444"
+                android:layout_marginTop="5dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Check Posts of Users"
+                android:textColor="#000"
+                android:fontFamily="@font/lato"
+                android:layout_gravity="start"
+                android:layout_marginTop="5dp"
+                android:textSize="16dp"
+                android:layout_marginStart="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="#848484"
+                android:layout_gravity="start"
+                android:layout_marginStart="10dp"
+                android:text="Browse around and see what your friends has posted recently! Let's hit'em up."
+                />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/postrecyclerview"
+            android:padding="5dp"
+            tools:listitem="@layout/element_post"
+            />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
