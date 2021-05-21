@@ -54,6 +54,7 @@
                 android:layout_alignParentTop="true"
                 android:id="@+id/layoutheading"
                 android:padding="10dp"
+
                 />
 
             <com.facebook.shimmer.ShimmerFrameLayout
@@ -143,6 +144,7 @@
 
                     />
             </LinearLayout>
+
         </LinearLayout>
 
 

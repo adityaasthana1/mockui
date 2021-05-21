@@ -100,7 +100,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         nestedScrollView.fullScroll(NestedScrollView.FOCUS_UP);
     }
 
-
     private void initView() {
         recyclerView = findViewById(R.id.recycler_view);
         postRecycler = findViewById(R.id.postrecyclerview);

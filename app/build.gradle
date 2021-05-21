@@ -61,6 +61,7 @@ dependencies {
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
     implementation 'com.github.fornewid:neumorphism:0.3.0'
     implementation 'com.github.jd-alexander:LikeButton:0.2.3'
+    implementation 'com.getbase:floatingactionbutton:1.10.1'
 
     //Time Library
     implementation 'joda-time:joda-time:2.10.10'
