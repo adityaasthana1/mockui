@@ -5,10 +5,13 @@
         android:icon="@drawable/ic_baseline_dashboard_24"/>
 
     <item android:id="@+id/nav_trackorder"
-        android:title="Track Orders"
+        android:title="Forum"
         android:icon="@drawable/ic_baseline_track_changes_24"/>
 
     <item android:id="@+id/nav_profile"
         android:icon="@drawable/ic_baseline_account_circle_24"
         android:title="Profile"/>
+    <item android:id="@+id/nav_more"
+        android:icon="@drawable/ic_baseline_expand_more_24"
+        android:title="More"/>
 </menu>

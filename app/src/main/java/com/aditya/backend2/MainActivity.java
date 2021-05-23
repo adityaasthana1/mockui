@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.media.Image;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.os.PersistableBundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -56,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     EndlessRecyclerViewScrollListener UserScrollListener, PostScrollListener;
     Boolean isLoading = false;
     List<PostData> postData;
+    Parcelable state;
     int page = 1;
 
     @Override
@@ -133,6 +136,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         recyclerView.setNestedScrollingEnabled(false);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
+        state = linearLayoutManager.onSaveInstanceState();
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
 
@@ -165,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         postRecycler.setHasFixedSize(true);
         LinearLayoutManager VlinearLayoutManager = new LinearLayoutManager(getApplicationContext());
         postRecycler.setLayoutManager(VlinearLayoutManager);
-        EndlessPostAdapter postAdapter = new EndlessPostAdapter(getApplicationContext(), postData);
+        EndlessPostAdapter postAdapter = new EndlessPostAdapter(MainActivity.this, postData);
         postRecycler.setAdapter(postAdapter);
 
 
@@ -185,4 +189,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     public boolean dispatchTouchEvent(MotionEvent ev) {
         return ZoomHelper.Companion.getInstance().dispatchTouchEvent(ev,this) || super.dispatchTouchEvent(ev);
     }
+
+
 }

@@ -1,9 +1,12 @@
 package com.aditya.backend2.models.Post;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Date;
 import java.util.List;
 
-public class PostData {
+public class PostData implements Parcelable {
     public Owner owner;
     public String id;
     public String image;
@@ -26,6 +29,27 @@ public class PostData {
         this.link = link;
         this.likes = likes;
     }
+
+    protected PostData(Parcel in) {
+        id = in.readString();
+        image = in.readString();
+        text = in.readString();
+        tags = in.createStringArrayList();
+        link = in.readString();
+        likes = in.readInt();
+    }
+
+    public static final Creator<PostData> CREATOR = new Creator<PostData>() {
+        @Override
+        public PostData createFromParcel(Parcel in) {
+            return new PostData(in);
+        }
+
+        @Override
+        public PostData[] newArray(int size) {
+            return new PostData[size];
+        }
+    };
 
     public Owner getOwner() {
         return owner;
@@ -89,5 +113,20 @@ public class PostData {
 
     public void setLikes(int likes) {
         this.likes = likes;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(image);
+        dest.writeString(text);
+        dest.writeStringList(tags);
+        dest.writeString(link);
+        dest.writeInt(likes);
     }
 }

@@ -1,16 +1,21 @@
 package com.aditya.backend2.Adapters;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aditya.backend2.CommentActivity;
 import com.aditya.backend2.R;
 import com.aditya.backend2.models.Post.PostData;
 import com.aghajari.zoomhelper.ZoomHelper;
@@ -52,12 +57,15 @@ public class EndlessPostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     private void populatePostViewHolder(PostViewHolder holder, int position) {
         try {
+            if(!data.get(position).getOwner().getFirstName().equals("Eckard")){
+                Glide.with(context).load(data.get(position).getImage()).into(holder.PostImage);
+            }
+            Log.d("HELLO WORL", data.get(position).getOwner().getFirstName());
             ZoomHelper.Companion.addZoomableView(holder.PostImage);
-            Glide.with(context).load(data.get(position).getImage()).into(holder.PostImage);
             Glide.with(context).load(data.get(position).getOwner().getPicture()).centerCrop().into(holder.UserImage);
             String fullname = data.get(position).getOwner().getFirstName() + " " + data.get(position).getOwner().getLastName();
             holder.UserName.setText(fullname);
-            holder.UserEmail.setText(data.get(position).getOwner().getEmail());
+            //holder.UserEmail.setText(data.get(position).getOwner().getEmail());
             String likes = data.get(position).getLikes() + " Likes";
             holder.PostLikes.setText(likes);
             String date = data.get(position).getPublishDate().toLocaleString();
@@ -66,9 +74,19 @@ public class EndlessPostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 holder.PostLink.setHeight(0);
             else holder.PostLink.setText(data.get(position).getLink());
             holder.PostDesription.setText(data.get(position).getText());
+            holder.CommentButton.setOnClickListener(v -> {
+                //Toast.makeText(context, "TAPPED BUTTON", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, CommentActivity.class);
+                intent.putExtra("POST_DATA", data.get(position));
+                String user_id = data.get(position).getId();
+                //intent.putExtra("USER_ID", user_id);
+                context.startActivity(intent);
+            });
+
         }catch (Exception e){
             Log.d("BindViewHolderError", e.getMessage());
         }
+
     }
 
     @Override
@@ -91,6 +109,7 @@ public class EndlessPostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         ImageView UserImage, PostOptions,PostImage;
         com.like.LikeButton LikeButton;
         TextView UserName, UserEmail, PostDesription, PostLikes, PostDate, PostLink;
+        LinearLayout CommentButton;
         public PostViewHolder(@NonNull View itemView) {
             super(itemView);
             PostImage = itemView.findViewById(R.id.post_image);
@@ -98,11 +117,12 @@ public class EndlessPostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             LikeButton = itemView.findViewById(R.id.post_like_icon);
             PostOptions = itemView.findViewById(R.id.post_user_option);
             UserName = itemView.findViewById(R.id.post_user_name);
-            UserEmail = itemView.findViewById(R.id.post_user_email);
+            //UserEmail = itemView.findViewById(R.id.post_user_email);
             PostDesription = itemView.findViewById(R.id.post_description);
             PostLikes = itemView.findViewById(R.id.post_likes);
             PostDate = itemView.findViewById(R.id.post_date);
             PostLink = itemView.findViewById(R.id.post_link);
+            CommentButton = itemView.findViewById(R.id.post_comment_button);
         }
     }
 

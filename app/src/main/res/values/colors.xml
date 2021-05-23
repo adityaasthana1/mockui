@@ -20,5 +20,47 @@
     <color name="secondarytext">#A9B8CF</color>
     <color name="primaryVariant">#3498db</color>
 
+    <color name="colorPrimary">#EC411B</color>
+    <color name="profile_label">#6829DA</color>
+    <color name="yellow">#E2B328</color>
+    <color name="light_yellow">#F6E8BD</color>
+    <color name="text_yellow">#A1811E</color>
+    <color name="colorLightRed">#F30909</color>
+    <color name="text_black">#5D5B5B</color>
+    <color name="color_temp">#FDE2C8</color>
+    <color name="grey">#808080</color>
+    <color name="light_grey">#DCDADA</color>
+    <color name="lightGrey">#F0F0F0</color>
+    <color name="button_green_color">#2CBC94</color>
+    <color name="pre_approval_card">#8043D5AC</color>
+    <color name="pre_approval_card_text_color">#178F3B</color>
+    <color name="red_color">#D91E19</color>
+    <color name="text_color">#9C9797</color>
+    <color name="signIn_popUp_color">#E6E6E6</color>
+    <color name="back_ground">#F4F4F4</color>
+    <color name="button_disable">#CDCACA</color>
+    <color name="logout_btn_text_color">#53BCEB</color>
+    <color name="border_color">#D3D3D3</color>
+    <color name="passCode_text">#4B4949</color>
+    <color name="passCode_heading_text">#898484</color>
 
+
+    //label Colors
+    <color name="delivery_label_background">#006FFF</color>
+    <color name="guest_label_background">#2ED5C4</color>
+    <color name="cab_label_background">#96D700</color>
+    <color name="essential_label_background">#FFBF00</color>
+    <color name="Vendor_label_background">#FF005C</color>
+    <color name="Others_label_background">#AD4EC6</color>
+
+    //randomDates colors
+    <color name="calendar_selected_day_bg">#2CBC94</color>
+    <color name="calendar_selected_range_bg">#2CBC94</color>
+
+    //this is for HighLighted dates
+    <color name="calendar_unavailable_bg">#F44336</color>
+    <color name="calendar_range_middle_unavailable_bg">#F44336</color>
+
+    // this is for Deactivated dates
+    <color name="calendar_range_middle_deactivated_bg">#673AB7</color>
 </resources>

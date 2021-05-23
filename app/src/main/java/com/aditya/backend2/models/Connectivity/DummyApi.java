@@ -1,5 +1,7 @@
 package com.aditya.backend2.models.Connectivity;
 
+import com.aditya.backend2.models.Comment.CommentResponse;
+import com.aditya.backend2.models.Post.PostData;
 import com.aditya.backend2.models.Post.PostDataResponse;
 import com.aditya.backend2.models.User.GetUserResponse;
 import com.aditya.backend2.models.User.UserDataComplete;
@@ -40,6 +42,17 @@ public interface DummyApi {
             @Query("limit") int limit
     );
 
+    @GET("post/{post_id}/comment")
+    Call<CommentResponse> getCommentsOfPost(
+            @Header("app-id") String app_id,
+            @Path("post_id") String post_id
+    );
+
+    @GET("post/{post_id}")
+    Call<PostData> getPostById(
+            @Header("app-id") String app_id,
+            @Path("post_id") String post_id
+    );
 
 
 }

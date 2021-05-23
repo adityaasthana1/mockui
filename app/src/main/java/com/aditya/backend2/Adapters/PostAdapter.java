@@ -41,24 +41,23 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     @Override
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
 
-        if (holder instanceof PostViewHolder){
-            try {
-                Glide.with(context).load(data.get(position).getImage()).into(holder.PostImage);
-                Glide.with(context).load(data.get(position).getOwner().getPicture()).centerCrop().into(holder.UserImage);
-                String fullname = data.get(position).getOwner().getFirstName() + " " + data.get(position).getOwner().getLastName();
-                holder.UserName.setText(fullname);
-                holder.UserEmail.setText(data.get(position).getOwner().getEmail());
-                String likes = data.get(position).getLikes() + " Likes";
-                holder.PostLikes.setText(likes);
-                String date = data.get(position).getPublishDate().toLocaleString();
-                holder.PostDate.setText(date);
-                if (data.get(position).getLink() == null)
-                    holder.PostLink.setHeight(0);
-                else holder.PostLink.setText(data.get(position).getLink());
-                holder.PostDesription.setText(data.get(position).getText());
-            }catch (Exception e){
-                Log.d("BindViewHolderError", e.getMessage());
-            }
+        try {
+
+            Glide.with(context).load(data.get(position).getImage()).into(holder.PostImage);
+            Glide.with(context).load(data.get(position).getOwner().getPicture()).centerCrop().into(holder.UserImage);
+            String fullname = data.get(position).getOwner().getFirstName() + " " + data.get(position).getOwner().getLastName();
+            holder.UserName.setText(fullname);
+            holder.UserEmail.setText(data.get(position).getOwner().getEmail());
+            String likes = data.get(position).getLikes() + " Likes";
+            holder.PostLikes.setText(likes);
+            String date = data.get(position).getPublishDate().toLocaleString();
+            holder.PostDate.setText(date);
+            if (data.get(position).getLink() == null)
+                holder.PostLink.setHeight(0);
+            else holder.PostLink.setText(data.get(position).getLink());
+            holder.PostDesription.setText(data.get(position).getText());
+        }catch (Exception e){
+            Log.d("BindViewHolderError", e.getMessage());
         }
 
 
