@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -32,6 +33,7 @@ import com.aditya.backend2.models.User.UserData;
 import com.aghajari.zoomhelper.ZoomHelper;
 import com.bumptech.glide.Glide;
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.github.pwittchen.infinitescroll.library.InfiniteScrollListener;
 import com.stfalcon.imageviewer.StfalconImageViewer;
 import com.stfalcon.imageviewer.loader.ImageLoader;
@@ -61,6 +63,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     Parcelable state;
     int page = 1;
 
+    FloatingActionButton floatingActionButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +78,11 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         builder.show();
 
          */
-        
+
+        floatingActionButton.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), AddPostActivity.class));
+        });
+
         mainActivityController = new MainActivityController(MainActivity.this);
         mainActivityController.getUsersFromDummyApi(pageCount,PAGE_LIMIT_MAIN);
         userPostsController = new UserPostsController(MainActivity.this);
@@ -114,6 +122,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         postshimmer = findViewById(R.id.postshimmer);
         usershimmer.startShimmer();
         postshimmer.startShimmer();
+        floatingActionButton = findViewById(R.id.main_floating_actionbutton);
     }
 
     @SuppressLint("SetTextI18n")
