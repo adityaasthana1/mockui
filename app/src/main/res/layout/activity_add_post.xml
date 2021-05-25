@@ -20,6 +20,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         >
+
         <ImageView
             android:layout_width="@dimen/height_40dp"
             android:layout_height="@dimen/img_width_40dp"

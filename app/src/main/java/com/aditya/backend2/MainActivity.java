@@ -2,6 +2,7 @@ package com.aditya.backend2;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -40,6 +41,8 @@ import com.stfalcon.imageviewer.loader.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import es.dmoral.toasty.Toasty;
 
 import static com.aditya.backend2.Extensions.AppConfig.PAGE_LIMIT_MAIN;
 import static com.aditya.backend2.Extensions.AppConfig.POST_LIMIT;
@@ -87,8 +90,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         mainActivityController.getUsersFromDummyApi(pageCount,PAGE_LIMIT_MAIN);
         userPostsController = new UserPostsController(MainActivity.this);
         userPostsController.getPostsByPageLimit(page, POST_LIMIT);
-
-
+        Toasty.error(this, "Here is some info for you.", Toast.LENGTH_LONG, true).show();
     }
 
     private void onClickListenrs() {

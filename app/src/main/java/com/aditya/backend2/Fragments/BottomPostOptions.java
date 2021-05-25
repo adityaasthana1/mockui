@@ -78,7 +78,7 @@ public class BottomPostOptions extends BottomSheetDialogFragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == PICK_IMAGE_REQUEST && data==null){
+        if (requestCode == PICK_IMAGE_REQUEST && null!=data){
             Uri uri = data.getData();
             bottomPostOptionsInterface.onImageSelected(uri,true);
             Fragment fragment = getActivity().getSupportFragmentManager().findFragmentByTag("BOTTOM_OPTIONS_ADDPOST");
